@@ -14,7 +14,7 @@ class File():
 
 	def loadTheta(self, path):
 		try:
-			with open("theta.txt") as file:
+			with open(path) as file:
 				theta = file.read()
 				theta = theta.split()
 			self.theta0 = float(theta[0])
@@ -43,9 +43,6 @@ class File():
 
 	def estimatePrice(self, mileage):
 		return (self.theta0 + (self.theta1 * mileage))
-
-	def calcul_accuracy(self, mileage):
-		pass
 
 if __name__ == '__main__':
 	prog = File()

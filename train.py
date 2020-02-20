@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from main import loadCSV
@@ -68,7 +67,7 @@ if __name__ == "__main__":
 	else :
 		lr.train()
 		lr.untransform()
-		np.savetxt("data/theta.txt", lr.theta, delimiter = ',');
+		np.savetxt("data/theta.txt", lr.theta, delimiter = ',', fmt="%.10f");
 		print ("Training is finished,\ntheta0: {0}\ntheta1: {1}".format(lr.theta[0], lr.theta[1]))
 		lr.display()
 
