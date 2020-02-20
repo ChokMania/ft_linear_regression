@@ -1,11 +1,12 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 def loadCSV(path):
 	df = pd.read_csv(path)
 	return df
 
-class LinearRegression():
+class File():
 	def __init__(self):
 		self.theta0 = 0
 		self.theta1 = 0
@@ -43,8 +44,11 @@ class LinearRegression():
 	def estimatePrice(self, mileage):
 		return (self.theta0 + (self.theta1 * mileage))
 
+	def calcul_accuracy(self, mileage):
+		pass
+
 if __name__ == '__main__':
-	prog = LinearRegression()
+	prog = File()
 	prog.loadTheta("data/theta.txt")
 	if prog.theta0 == 0 and prog.theta1 == 0:
 		print("Model not trained.")
