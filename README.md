@@ -8,7 +8,7 @@ Mais ne vous inquiétez pas, nous allons en fait commencer avec un apprentissage
 
 ## Objectifs
 
-Le but de ce projet est de vous présenter le concept de base du machine learning. Pour ce projet, vous devrez créer un programme qui prédit le prix d’une voiture en utilisant un entrainement de [fonction linéaire](https://fr.wikipedia.org/wiki/Linear_function) avec un [algorithme de descente de gradient](https://fr.wikipedia.org/wiki/Gradient_descent).
+Le but de ce projet est de vous présenter le concept de base du machine learning. Pour ce projet, vous devrez créer un programme qui prédit le prix d’une voiture en utilisant un entrainement de [fonction linéaire](https://fr.wikipedia.org/wiki/Fonction_lin%C3%A9aire_(analyse)) avec un [algorithme de descente de gradient](https://fr.wikipedia.org/wiki/Algorithme_du_gradient).
 Nous allons travailler sur un exemple précis pour le projet, mais une fois que vous aurez terminé, vous serez capable d’utiliser l’algorithme avec tout autre ensemble de données.
 
 ## Le programme
