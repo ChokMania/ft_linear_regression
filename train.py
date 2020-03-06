@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+#import matplotlib.animation as animation
 from main import loadCSV
-
 
 class LinearRegression() :
 
@@ -14,6 +14,15 @@ class LinearRegression() :
 		self.learningRate = 0.1
 		self.theta = [0.0, 0.0]
 		self.cost_fun = []
+		self.evolution = []
+
+	def create_line(self, value):
+		price = self.estimatePrice(self.km)
+		km = LinearRegression.destandardize(self.km, self.data[:, 0])
+		price = LinearRegression.destandardize(price, self.data[:, 1])
+		tmpt1 = (price[0] - price[1]) / (km[0] - km[1])
+		tmpt0 = -tmpt1 * km[0] + price[0]
+		return tmpt0 + (tmpt1 * value)
 
 	def estimatePrice(self, value):
 		return self.theta0 + (self.theta1 * value)
@@ -48,10 +57,21 @@ class LinearRegression() :
 			self.theta1 = self.theta1 - self.learningRate * 1 / m * sum([(self.estimatePrice(self.km[i]) - self.price[i]) * self.km[i] for i in range(m)])
 			cost = (1 / (2 * m)) * sum([(self.estimatePrice(self.km[i]) - self.price[i])**2 for i in range(m)]) ### MSE cost Function
 			self.cost_fun.append(cost)
+			self.evolution.append([self.create_line(250000), self.create_line(100)])
 			i += 1
 
 	def display(self):
+		plt.figure(figsize=(18, 8))
 		self.cost_fun = np.array(self.cost_fun)
+		plt.subplot(1, 2, 1)
+		for x in range(len(self.data[:,0])):
+			plt.plot(self.data[:,0][x], self.data[:,1][x], "b+")
+		for x in self.evolution :
+			plt.plot([250000, 100], x, "r-")
+		plt.ylabel('price')
+		plt.xlabel('km')
+		plt.title("Evolution of linear Regression")
+		plt.subplot(1, 2, 2)
 		plt.plot(self.cost_fun)
 		plt.ylabel("cost function")
 		plt.xlabel("iteration")

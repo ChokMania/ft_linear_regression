@@ -34,7 +34,7 @@ class File():
 	def display(self, data):
 		for x in range(len(data["km"])):
 			plt.plot(data["km"][x], data["price"][x], "b+")
-		plt.plot([250000, 100], [prog.estimatePrice(250000), prog.estimatePrice(100)], 'r-')
+		plt.plot([250000, 100], [self.estimatePrice(250000), self.estimatePrice(100)], 'r-')
 		plt.plot(self.nb, prog.estimatePrice(self.nb), "go")
 		plt.ylabel('price')
 		plt.xlabel('km')
