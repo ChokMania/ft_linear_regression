@@ -13,9 +13,9 @@ Nous allons travailler sur un exemple précis pour le projet, mais une fois que 
 
 ## Formules
 
-$$estimatePrice(mileage) = \theta_{0} + (\theta_{1} * mileage)$$
-$$tmp\theta_{0} = learningRate * \frac{1}{m} \sum_{i=0}^{m - 1} estimateP rice(mileage[i]) − price[i])$$
-$$tmp\theta_{1} = learningRate * \frac{1}{m} \sum_{i=0}^{m - 1} estimateP rice(mileage[i]) − price[i]) * mileage[i]$$
+$estimatePrice(mileage) = \theta_{0} + (\theta_{1} * mileage)$
+$tmp\theta_{0} = learningRate * \frac{1}{m} \sum_{i=0}^{m - 1} estimateP rice(mileage[i]) − price[i])$
+$tmp\theta_{1} = learningRate * \frac{1}{m} \sum_{i=0}^{m - 1} estimateP rice(mileage[i]) − price[i]) * mileage[i]$
 
 
 ## Le programme
