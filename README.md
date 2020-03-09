@@ -27,15 +27,14 @@ To train our model
 <pre><code>python train.py</code>
 This will save the weights trained in `./data/theta.txt`
 </pre>
-![Evolution](./images/Train_Epoch.png)
-![Cost](./images/Train_Learning.png)
-
+<img src="./images/Train_Epoch.png">
+<img src="./images/Train_Learning.png">
 
 To predict a value
 <pre><code>python main.py</code>
 Enter a mileage: n
 With: n km, the estimated price is : x
 </pre>
-![Estimated](./images/Graph_Main.png)
+<img src="./images/Graph_Main.png">
 
 
