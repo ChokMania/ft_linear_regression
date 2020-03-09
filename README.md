@@ -1,4 +1,4 @@
-# ft_linear_regression [(sujet)](https://cdn.intra.42.fr/pdf/pdf/3505/ft_linear_regression.fr.pdf)
+# ft_linear_regression [(subject)](https://cdn.intra.42.fr/pdf/pdf/3505/ft_linear_regression.fr.pdf)
 
 ## Introduction
 
