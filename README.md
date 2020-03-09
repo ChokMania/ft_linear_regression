@@ -27,12 +27,13 @@ To train our model
 <pre><code>python train.py</code>
 This will save the weights trained in `./data/theta.txt`
 </pre>
-![Estimated](https://github.com/ChokMania/ft_linear_regression/tree/master/images/Train_Epoch.PNG)
-![Cost](https://github.com/ChokMania/ft_linear_regression/tree/master/images/Train_Learning.PNG)
+<img src="./images/Figure_2.png"/>
+<img src="./images/Figure_3.png"/>
 
 To predict a value
 <pre><code>python main.py</code>
 Enter a mileage: n
 With: n km, the estimated price is : x
 </pre>
-![Graph](https://github.com/ChokMania/ft_linear_regression/blob/master/images/Graph_Main.PNG)
+
+<img src="./images/Figure_1.png"/>

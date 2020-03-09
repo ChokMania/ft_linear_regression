@@ -61,7 +61,7 @@ class LinearRegression() :
 			i += 1
 
 	def display_cost(self):
-		plt.figure(figsize=(18, 8))
+		plt.figure(figsize=(10, 8))
 		self.cost_fun = np.array(self.cost_fun)
 		plt.plot(self.cost_fun)
 		plt.ylabel("cost function")
@@ -86,7 +86,7 @@ if __name__ == "__main__":
 		print ("Training is finished,\ntheta0: {0}\ntheta1: {1}".format(lr.theta[0], lr.theta[1]))
 		lr.display_cost()
 		###• ANIMATION
-		fig, main_ax = plt.subplots(figsize=(18, 8))
+		fig, main_ax = plt.subplots(figsize=(10, 8))
 		for x in range(len(lr.data[:,0])):
 			plt.plot(lr.data[:,0][x], lr.data[:,1][x], "b+")
 		ax_slider = plt.axes([0.15, 0.01, 0.71, 0.03])

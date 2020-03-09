@@ -31,6 +31,7 @@ class File():
 		self.nb = int(nb)
 
 	def display(self, data):
+		plt.figure(figsize=(10, 8))
 		for x in range(len(data["km"])):
 			plt.plot(data["km"][x], data["price"][x], "b+")
 		plt.plot([250000, 100], [self.estimatePrice(250000), self.estimatePrice(100)], 'r-')
