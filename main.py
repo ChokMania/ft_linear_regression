@@ -25,7 +25,7 @@ class File():
 	def getValue(self):
 		nb = ""
 		while (not nb.isnumeric() or nb == ""):
-			nb = input("Enter a mileage:")
+			nb = input("Enter a mileage: ")
 			if (not nb.isnumeric()):
 				print('Wrong input, we need a number')
 		self.nb = int(nb)
@@ -49,6 +49,6 @@ if __name__ == '__main__':
 	if prog.theta0 == 0 and prog.theta1 == 0:
 		print("Model not trained.")
 	prog.getValue()
-	print("Avec:", prog.nb, "km, le prix est de: ", prog.estimatePrice(prog.nb), "")
+	print("With:", prog.nb, "km, the estimated price is : ", prog.estimatePrice(prog.nb), "")
 	data = loadCSV("data/data.csv")
 	prog.display(data)

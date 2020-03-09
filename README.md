@@ -17,6 +17,25 @@ Nous allons travailler sur un exemple précis pour le projet, mais une fois que 
 <img src="./images/F1.svg"/>
 <img src="./images/F2.svg"/>
 
-## Le programme
+### Installation
+<pre>
+<code>git clone </code>
+<code>python -m pip install -r lib.txt</code></pre> 
+
+### Usage
+To train our model
+<pre><code>python train.py</code>
+This will save the weights trained in `./data/theta.txt`
+</pre>
+![Evolution](./images/Train_Epoch.png)
+![Cost](./images/Train_Learning.png)
+
+
+To predict a value
+<pre><code>python main.py</code>
+Enter a mileage: n
+With: n km, the estimated price is : x
+</pre>
+![Estimated](./images/Graph_Main.png)
 
 
