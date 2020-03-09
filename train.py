@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#import matplotlib.animation as animation
 from main import loadCSV
+from matplotlib.widgets import Slider
 
 class LinearRegression() :
 
@@ -60,23 +60,18 @@ class LinearRegression() :
 			self.evolution.append([self.create_line(250000), self.create_line(100)])
 			i += 1
 
-	def display(self):
+	def display_cost(self):
 		plt.figure(figsize=(18, 8))
 		self.cost_fun = np.array(self.cost_fun)
-		plt.subplot(1, 2, 1)
-		for x in range(len(self.data[:,0])):
-			plt.plot(self.data[:,0][x], self.data[:,1][x], "b+")
-		for x in self.evolution :
-			plt.plot([250000, 100], x, "r-")
-		plt.ylabel('price')
-		plt.xlabel('km')
-		plt.title("Evolution of linear Regression")
-		plt.subplot(1, 2, 2)
 		plt.plot(self.cost_fun)
 		plt.ylabel("cost function")
 		plt.xlabel("iteration")
-		plt.title("Leaning Graph")
+		plt.title("Learning Graph")
 		plt.show()
+
+def update(val):
+	l1.set_data([250000, 100], lr.evolution[int(val)])
+	plt.draw()
 
 if __name__ == "__main__":
 	np.seterr(divide='ignore', invalid='ignore') # ignore error
@@ -89,5 +84,18 @@ if __name__ == "__main__":
 		lr.untransform()
 		np.savetxt("data/theta.txt", lr.theta, delimiter = ',', fmt="%.10f");
 		print ("Training is finished,\ntheta0: {0}\ntheta1: {1}".format(lr.theta[0], lr.theta[1]))
-		lr.display()
+		lr.display_cost()
+		###• ANIMATION
+		fig, main_ax = plt.subplots(figsize=(18, 8))
+		for x in range(len(lr.data[:,0])):
+			plt.plot(lr.data[:,0][x], lr.data[:,1][x], "b+")
+		ax_slider = plt.axes([0.15, 0.01, 0.71, 0.03])
+		slider = Slider(ax_slider, 'Epoch', 0, len(lr.evolution) - 1, valinit=0)
+		slider.on_changed(update)
+		l1, = main_ax.plot([250000, 0], lr.evolution[0], label="Estimated Price", lw=2)
+		main_ax.set_xlabel('price')
+		main_ax.set_ylabel('km')
+		main_ax.set_title("Evolution of linear Regression")
+		plt.show()
+
 
