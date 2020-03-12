@@ -22,7 +22,7 @@ able to use the algorithm with any other dataset.
 
 ### Install
 <pre>
-<code>git clone </code>
+<code>git clone https://github.com/ChokMania/ft_linear_regression.git</code>
 <code>python -m pip install -r lib.txt</code></pre> 
 
 ### Usage
