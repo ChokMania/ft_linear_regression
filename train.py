@@ -18,8 +18,8 @@ class LinearRegression() :
 
 	def create_line(self, value):
 		price = self.estimatePrice(self.km)
-		km = LinearRegression.destandardize(self.km, self.data[:, 0])
-		price = LinearRegression.destandardize(price, self.data[:, 1])
+		km = self.destandardize(self.km, self.data[:, 0])
+		price = self.destandardize(price, self.data[:, 1])
 		tmpt1 = (price[0] - price[1]) / (km[0] - km[1])
 		tmpt0 = -tmpt1 * km[0] + price[0]
 		return tmpt0 + (tmpt1 * value)
@@ -27,21 +27,21 @@ class LinearRegression() :
 	def estimatePrice(self, value):
 		return self.theta0 + (self.theta1 * value)
 
-	def standardize(l):
+	def standardize(self, l):
 		return (l - np.mean(l)) / np.std(l)
 
-	def destandardize(l, l_ref):
+	def destandardize(self, l, l_ref):
 		return l * np.std(l_ref) + np.mean(l_ref)
 
 	def transform(self):
 		self.data = np.array(self.data)
-		self.km = LinearRegression.standardize(self.data[:, 0])
-		self.price = LinearRegression.standardize(self.data[:, 1])
+		self.km = self.standardize(self.data[:, 0])
+		self.price = self.standardize(self.data[:, 1])
 
 	def untransform(self):
 		self.price = self.estimatePrice(self.km)
-		self.km = LinearRegression.destandardize(self.km, self.data[:, 0])
-		self.price = LinearRegression.destandardize(self.price, self.data[:, 1])
+		self.km = self.destandardize(self.km, self.data[:, 0])
+		self.price = self.destandardize(self.price, self.data[:, 1])
 		self.theta1 = (self.price[0] - self.price[1]) / (self.km[0] - self.km[1]) # coef fonction affine
 		self.theta0 = -self.theta1 * self.km[0] + self.price[0] # y(0) = T0 + T1*x(0) => T0 = -T1*x(0) + y(0)
 		self.theta = [self.theta0, self.theta1]
@@ -82,10 +82,10 @@ if __name__ == "__main__":
 	else :
 		lr.train()
 		lr.untransform()
-		np.savetxt("data/theta.txt", lr.theta, delimiter = ',', fmt="%.10f");
+		np.savetxt("data/theta.txt", lr.theta, delimiter = ',', fmt="%.10f")
 		print ("Training is finished,\ntheta0: {0}\ntheta1: {1}".format(lr.theta[0], lr.theta[1]))
 		lr.display_cost()
-		###• ANIMATION
+		### ANIMATION
 		fig, main_ax = plt.subplots(figsize=(10, 8))
 		for x in range(len(lr.data[:,0])):
 			plt.plot(lr.data[:,0][x], lr.data[:,1][x], "b+")
