@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from main import loadCSV
 from matplotlib.widgets import Slider
+from main import loadCSV
 
 class LinearRegression() :
 
@@ -61,13 +61,22 @@ class LinearRegression() :
 			i += 1
 
 	def display_cost(self):
-		plt.figure(figsize=(10, 8))
-		self.cost_fun = np.array(self.cost_fun)
-		plt.plot(self.cost_fun)
+		plt.ion()
+		fig, ax = plt.subplots()
+		x, y = [],[]
+		sc = ax.scatter(x, y, c="r")
 		plt.ylabel("cost function")
 		plt.xlabel("iteration")
 		plt.title("Learning Graph")
-		plt.show()
+		plt.xlim(0,len(self.cost_fun))
+		plt.ylim(min(self.cost_fun), max(self.cost_fun))
+		plt.draw()
+		for i in range(len(self.cost_fun)):
+			x.append(i)
+			y.append(self.cost_fun[i])
+			sc.set_offsets(np.c_[x,y])
+			fig.canvas.draw_idle()
+			plt.pause(0.1)
 
 def update(val):
 	l1.set_data([250000, 100], lr.evolution[int(val)])
