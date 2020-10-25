@@ -4,7 +4,6 @@ from matplotlib.widgets import Slider
 from main import loadCSV
 
 class LinearRegression() :
-
 	def __init__(self):
 		self.data = loadCSV("data/data.csv")
 		self.theta0 = 0.0
@@ -53,7 +52,7 @@ class LinearRegression() :
 		i = 0
 		while round(tmpcost, 20) != round(cost, 20) and i < 1000:
 			tmpcost = cost
-			self.theta0 = self.theta0 - self.learningRate * 1 / m * sum([(self.estimatePrice(self.km[i]) - self.price[i]) for i in range(m)]) #Σ
+			self.theta0 = self.theta0 - self.learningRate * 1 / m * sum([(self.estimatePrice(self.km[i]) - self.price[i]) for i in range(m)])
 			self.theta1 = self.theta1 - self.learningRate * 1 / m * sum([(self.estimatePrice(self.km[i]) - self.price[i]) * self.km[i] for i in range(m)])
 			cost = (1 / (2 * m)) * sum([(self.estimatePrice(self.km[i]) - self.price[i])**2 for i in range(m)]) ### MSE cost Function
 			self.cost_fun.append(cost)
@@ -76,7 +75,9 @@ class LinearRegression() :
 			y.append(self.cost_fun[i])
 			sc.set_offsets(np.c_[x,y])
 			fig.canvas.draw_idle()
-			plt.pause(0.1)
+			plt.pause(0.01)
+		plt.ioff()
+
 
 def update(val):
 	l1.set_data([250000, 100], lr.evolution[int(val)])
@@ -94,7 +95,6 @@ if __name__ == "__main__":
 		np.savetxt("data/theta.txt", lr.theta, delimiter = ',', fmt="%.10f")
 		print ("Training is finished,\ntheta0: {0}\ntheta1: {1}".format(lr.theta[0], lr.theta[1]))
 		lr.display_cost()
-		### ANIMATION
 		fig, main_ax = plt.subplots(figsize=(10, 8))
 		for x in range(len(lr.data[:,0])):
 			plt.plot(lr.data[:,0][x], lr.data[:,1][x], "b+")
@@ -106,5 +106,3 @@ if __name__ == "__main__":
 		main_ax.set_ylabel('km')
 		main_ax.set_title("Evolution of linear Regression")
 		plt.show()
-
-
